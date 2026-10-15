@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+body { font-family: 'Kanit', sans-serif; }
+.map-container { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.animate-pop { animation: fadeIn 0.3s ease-out forwards; }
+.map-pin-responsive { transition: transform 0.2s; }
+@media (max-width: 640px) { .map-pin-responsive { transform: translate(-50%, -50%) scale(0.8) !important; } }
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.5); border-radius: 4px; }
+
+
+/* ... existing code ... */
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.5); border-radius: 4px; }
+
+/* STREAMING_CHUNK:Adding Admin CSS Rules... /
+/ --- Admin Styles --- */
+.calendar-day { min-height: 80px; }
+@media(max-width: 640px){ .calendar-day { min-height: 50px; } }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.map-pin { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 30px; background-color: #ef4444; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: bold; cursor: grab; transition: transform 0.1s; }
+.map-pin:active { cursor: grabbing; transform: translate(-50%, -50%) scale(1.1); }
+.map-pin.active { background-color: #22c55e; z-index: 10; transform: translate(-50%, -50%) scale(1.2); }
+#print-container { display: none; }
+@media print {
+.no-print, .no-print * { display: none !important; }
+body, html { margin: 0; padding: 0; background: white; height: 100%; overflow: visible !important; }
+#print-container { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; margin: 0 !important; padding: 0 !important; display: block !important; background: white; z-index: 9999; visibility: visible !important; }
+#print-container > div { display: none; }
+#receipt-print-area { width: 210mm; min-height: 297mm; padding: 15mm; background-color: white !important; color: black !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+#official-receipt-print-area { width: 210mm; min-height: 297mm; padding: 15mm; background-color: white !important; color: black !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+#report-print-area { width: 297mm; min-height: 210mm; padding: 15mm; background-color: white !important; color: black !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
